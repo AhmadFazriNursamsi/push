@@ -1,0 +1,87 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h4 class="mb-0"><i class="clr-blue fa fa-users me-2"></i> Users </h4>
+            <button type="button" id="btnAddUser" class="btn btn-sm btn-primary m-2" data-toggle="modal" data-target="#addUser"><i class="fa fa-plus me-2"></i>add user</button>
+        </div>
+        <div class="table-responsive">
+            <table id="userstable" class="table text-start table-striped align-middle table-bordered table-hover mb-0">
+                <thead>
+		            <tr>
+		                <th>Name<br><input type="text" class="form-control" aria-describedby="basic-addon1"></th>
+		                <th>Position</th>
+		                <th>Office</th>
+		                <th>Extn.</th>
+		                <th>Start date</th>
+		                <th>Salary</th>
+		            </tr>
+		        </thead>
+		        <tfoot>
+		            <tr>
+		                <th>Name</th>
+		                <th>Position</th>
+		                <th>Office</th>
+		                <th>Extn.</th>
+		                <th>Start date</th>
+		                <th>Salary</th>
+		            </tr>
+		        </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="addUserTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add User</h5>
+        <button type="button" class="close-modal btn btn-sm btn-danger close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-cst">
+        	<div class="input-group mb-3">
+			    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user me-2"></i></span>
+			    <input type="text" class="form-control" required placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-group mb-3">
+			    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-circle me-2"></i></span>
+			    <input type="text" class="form-control" required placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-group mb-3">
+			    <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope me-2"></i></span>
+			    <input type="email" class="form-control" required placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+			</div>
+
+			<div class="input-group mb-3 float-right">
+	        	<button type="submit" class="btn btn-sm btn-primary float-right"><i class="fa fa-plus me-2"></i> Add User</button>
+	        </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	$("#btnAddUser").click(function(){
+		$('#addUser').modal('show');
+	});
+
+    $(".close-modal").click(function(){
+        $("#addUser").modal('hide');
+    });
+
+    $(document).ready(function () {
+	    $('#userstable').DataTable({
+	        ajax: './jsondatas/user.txt',
+	    });
+	});
+	
+</script>
